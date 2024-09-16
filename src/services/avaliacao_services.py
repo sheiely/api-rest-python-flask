@@ -36,7 +36,7 @@ def avaliar(filme_id, usuario_id, nota):
         raise Exception("Erro ao procurar aluguel - usuario e/ou filme nao existem, ou usuario nao alugou esse filme")   
     except Exception as e:
         error = str(e)
-        print(error)
+        db.rollback()
         return ({
             "message": "ERRO: "+error
         }, 400)

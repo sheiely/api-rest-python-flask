@@ -19,6 +19,7 @@ def criar(nome, celular, email):
         
     except Exception as e:
         error = str(e)
+        db.rollback()
         return ({
             "message": "ERRO: "+error
         }, 400)

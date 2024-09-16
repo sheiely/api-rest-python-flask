@@ -20,6 +20,7 @@ def criar(filme_id, usuario_id, vencimento_data):
         
     except Exception as e:
         error = str(e)
+        db.rollback()
         return ({
             "message": "ERRO: "+error
         }, 400)
@@ -44,6 +45,7 @@ def listarPorUsuario(usuario_id):
         }, 200)
     except Exception as e:
         error = str(e)
+        db.rollback()
         return ({
             "message": "ERRO: "+error
         }, 400)

@@ -9,6 +9,7 @@
       "/alugueis/criar": {
         "post": {
           "summary": "Cria um novo aluguel",
+          "tags": ["Alugueis"],
           "parameters": [
             {
               "name": "aluguel",
@@ -46,10 +47,22 @@
           }
         }
       },
-      "/alugueis/listarPorUsuario/<usuario_id>": {
+      "/alugueis/listarPorUsuario/{usuario_id}": {
         "get": {
-          "summary": "Lista todos os filmes alugados pelo usuario",
+          "summary": "Lista todos os filmes alugados pelo usuario",     
+          "tags": ["Alugueis"],
           "description": "Retorna uma lista de filmes, com todas as informações do filme e a avaliação do usuario",
+          "parameters": [
+            {
+              "name": "usuario_id",
+              "in": "path",
+              "description": "ID do usuário para filtrar os alugueis",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
           "responses": {
             "200": {
               "description": "Retorna todos os filmes alugados e avaliados pelo usuario"
@@ -63,6 +76,7 @@
       "/avaliacoes/avaliar": {
         "post": {
           "summary": "Avaliar filme",
+          "tags": ["Avaliacoes"],
           "parameters": [
             {
               "name": "avaliacao",
@@ -100,6 +114,7 @@
       "/filmes/criar": {
         "post": {
           "summary": "Cria um novo filme",
+          "tags": ["Filmes"],
           "parameters": [
             {
               "name": "filme",
@@ -142,10 +157,22 @@
           }
         }
       },
-      "/filmes/listarPorGenero/<genero>": {
+      "/filmes/listarPorGenero/{genero}": {
         "get": {
           "summary": "Lista todos os filmes pelo genero",
+          "tags": ["Filmes"],
           "description": "Retorna uma lista de filmes com o genero pesquisado",
+          "parameters": [
+            {
+              "name": "genero",
+              "in": "path",
+              "description": "ID do usuário para filtrar os alugueis",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
           "responses": {
             "200": {
               "description": "Retorna todos os filmes alugados e avaliados pelo usuario"
@@ -156,10 +183,22 @@
           }
         }
       },
-      "/filmes/buscar/<id>": {
+      "/filmes/buscar/{id}": {
         "get": {
           "summary": "Busca um filme",
+          "tags": ["Filmes"],
           "description": "Retorna um filme buscado pelo id",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID do usuário para filtrar os alugueis",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
           "responses": {
             "200": {
               "description": "Filme retornado com sucesso"
@@ -173,6 +212,7 @@
       "/usuarios/criar": {
         "post": {
           "summary": "Cria um novo usuario",
+          "tags": ["Usuarios"],
           "parameters": [
             {
               "name": "usuario",
@@ -319,5 +359,23 @@
           }
         }
       }
-    }
+    },
+    "tags": [
+      {
+        "name": "Alugueis",
+        "description": "Operações relacionadas a alugueis"
+      },
+      {
+        "name": "Filmes",
+        "description": "Operações relacionadas a filmes"
+      },
+      {
+        "name": "Avaliacoes",
+        "description": "Operações relacionadas a avaliacoes"
+      },
+      {
+        "name": "Usuarios",
+        "description": "Operações relacionadas a usuarios"
+      }
+    ]
   }

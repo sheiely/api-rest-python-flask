@@ -28,7 +28,7 @@ def listarPorGenero(genero):
         }, 200)
     except Exception as e:
         error = str(e)
-        print(error)
+        db.rollback()
         return ({
             "message": "ERRO: "+error
         }, 400)
@@ -45,6 +45,7 @@ def buscar(id):
         raise Exception("Nao foi encontrado nenhum filme")
     except Exception as e:
         error = str(e)
+        db.rollback()
         return ({
             "message": "ERRO: "+error
         }, 400)
