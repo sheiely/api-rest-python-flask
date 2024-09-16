@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  postgres:
+  db:
     image: postgres
     environment:
       POSTGRES_USER: filmestop
@@ -8,5 +8,20 @@ services:
       POSTGRES_DB: filmestop
     ports:
       - "8432:5432"
-  
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://filmestop:1234@db:5432/filmestop
+
+
   

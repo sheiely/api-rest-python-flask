@@ -19,7 +19,6 @@ COPY . .
 EXPOSE 5000
 
 # Definir as variáveis de ambiente
-ENV DATABASE_URL=postgresql://postgres:1234@localhost:5432/filmestop
 
 # Rodar o comando para iniciar a aplicação
 ENV FLASK_APP=app.py
