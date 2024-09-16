@@ -1,0 +1,323 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "API FilmesTop",
+      "description": "API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/alugueis/criar": {
+        "post": {
+          "summary": "Cria um novo aluguel",
+          "parameters": [
+            {
+              "name": "aluguel",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filme_id": {
+                    "type": "integer",
+                    "description": "Id unico do filme alugado"
+                  },
+                  "usuario_id": {
+                    "type": "integer",
+                    "description": "Id unico do usuario que ira alugar o filme"
+                  },
+                  "vencimento_data": {
+                    "type": "Date",
+                    "description": "Data que vai ser vencido",
+                    "example": "2017-01-14",
+                    "format": "date",
+                    "pattern": "YYYY-MM-DD"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Alugado com sucesso"
+            },
+            "400": {
+              "description": "Erro ao alugar"
+            }
+          }
+        }
+      },
+      "/alugueis/listarPorUsuario/<usuario_id>": {
+        "get": {
+          "summary": "Lista todos os filmes alugados pelo usuario",
+          "description": "Retorna uma lista de filmes, com todas as informações do filme e a avaliação do usuario",
+          "responses": {
+            "200": {
+              "description": "Retorna todos os filmes alugados e avaliados pelo usuario"
+            },
+            "400": {
+              "description": "Erro ao alugar"
+            }
+          }
+        }
+      },
+      "/avaliacoes/avaliar": {
+        "post": {
+          "summary": "Avaliar filme",
+          "parameters": [
+            {
+              "name": "avaliacao",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filme_id": {
+                    "type": "integer",
+                    "description": "Id unico do filme alugado"
+                  },
+                  "usuario_id": {
+                    "type": "integer",
+                    "description": "Id unico do usuario que ira alugar o filme"
+                  },
+                  "nota": {
+                    "type": "integer",
+                    "description": "nota de 1 a 5 para o filme"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Avaliado com sucesso"
+            },
+            "400": {
+              "description": "Erro ao avaliar"
+            }
+          }
+        }
+      },
+      "/filmes/criar": {
+        "post": {
+          "summary": "Cria um novo filme",
+          "parameters": [
+            {
+              "name": "filme",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "description": "nome do filme"
+                  },
+                  "genero": {
+                    "type": "string",
+                    "description": "genero do filme"
+                  },
+                  "ano": {
+                    "type": "integer",
+                    "description": "ano de lançamento do filme"
+                  },
+                  "sinopse": {
+                    "type": "text",
+                    "description": "sinopse"
+                  },
+                  "diretor": {
+                    "type": "string",
+                    "description": "diretor do filme"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Criado com sucesso"
+            },
+            "400": {
+              "description": "Erro ao criar"
+            }
+          }
+        }
+      },
+      "/filmes/listarPorGenero/<genero>": {
+        "get": {
+          "summary": "Lista todos os filmes pelo genero",
+          "description": "Retorna uma lista de filmes com o genero pesquisado",
+          "responses": {
+            "200": {
+              "description": "Retorna todos os filmes alugados e avaliados pelo usuario"
+            },
+            "400": {
+              "description": "Erro ao alugar"
+            }
+          }
+        }
+      },
+      "/filmes/buscar/<id>": {
+        "get": {
+          "summary": "Busca um filme",
+          "description": "Retorna um filme buscado pelo id",
+          "responses": {
+            "200": {
+              "description": "Filme retornado com sucesso"
+            },
+            "400": {
+              "description": "Erro ao alugar"
+            }
+          }
+        }
+      },
+      "/usuarios/criar": {
+        "post": {
+          "summary": "Cria um novo usuario",
+          "parameters": [
+            {
+              "name": "usuario",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "description": "nome do usuario"
+                  },
+                  "celular": {
+                    "type": "string",
+                    "description": "celular do usuario"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "email do usuario"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Criado com sucesso"
+            },
+            "400": {
+              "description": "Erro ao criar"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Aluguel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id unico"
+          },
+          "filme_id": {
+            "type": "integer",
+            "description": "Id unico do filme alugado"
+          },
+          "usuario_id": {
+            "type": "integer",
+            "description": "Id unico do usuario que ira alugar o filme"
+          },
+          "criacao_data": {
+            "type": "Date",
+            "description": "Data que foi alugado",
+            "example": "2017-01-01",
+            "format": "date",
+            "pattern": "YYYY-MM-DD"
+          },
+          "vencimento_data": {
+            "type": "Date",
+            "description": "Data que vai ser vencido",
+            "example": "2017-01-14",
+            "format": "date",
+            "pattern": "YYYY-MM-DD"
+          }
+        }
+      },
+      "Avaliacao": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id unico"
+          },
+          "filme_id": {
+            "type": "integer",
+            "description": "Id unico do filme alugado"
+          },
+          "usuario_id": {
+            "type": "integer",
+            "description": "Id unico do usuario que ira alugar o filme"
+          },
+          "nota": {
+            "type": "integer",
+            "description": "nota de 1 a 5 para o filme"
+          }
+        }
+      },
+      "Filme": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id unico"
+          },
+          "nome": {
+            "type": "string",
+            "description": "nome do fime"
+          },
+          "genero": {
+            "type": "string",
+            "description": "genero"
+          },
+          "ano": {
+            "type": "integer",
+            "description": "ano de lançamento do filme"
+          },
+          "sinopse": {
+            "type": "text",
+            "description": "sinopse do filme"
+          },
+          "diretor": {
+            "type": "string",
+            "description": "diretor do filme"
+          },
+          "total_avaliacoes": {
+            "type": "integer",
+            "description": "total de avaliacoes feitas para o filme"
+          },
+          "nota_final": {
+            "type": "double",
+            "description": "nota final para o filme"
+          }
+        }
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id unico"
+          },
+          "nome": {
+            "type": "string",
+            "description": "nome do usuario"
+          },
+          "celular": {
+            "type": "string",
+            "description": "celular do usuario"
+          },
+          "email": {
+            "type": "string",
+            "description": "email do usuario"
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: filmestop
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: filmestop
+    ports:
+      - "8432:5432"
+  
+  
