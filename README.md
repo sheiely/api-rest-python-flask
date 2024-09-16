@@ -36,14 +36,11 @@ source venv/bin/activate  # No Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ````
 
-5. Caso opte por iniciar o PostgreSql pelo Docker ao invés do PGAdmin, você pode:
+5. Caso opte por iniciar o PostgreSql pelo Docker você pode:
 ````
-docker run --name postgres_filmes_top -e POSTGRES_USER=seu_usuario -e POSTGRES_PASSWORD=sua_senha -e POSTGRES_DB=filmes_top_db -p 5432:5432 -d postgres
+docker-compose up --build 
 ````
 
-6. Execute o projeto
-````
-flask run
-````
+acesse a rota (http://localhost:5000/swagger/)
 
 Para verificar a documentação da aplicação, verifique a rota "\swagger"
