@@ -41,6 +41,6 @@ pip install -r requirements.txt
 docker-compose up --build 
 ````
 
-acesse a rota (http://localhost:5000/swagger/)
+##Acessando
 
-Para verificar a documentação da aplicação, verifique a rota "\swagger"
+Para verificar a documentação da aplicação, verifique a rota "/swagger"
